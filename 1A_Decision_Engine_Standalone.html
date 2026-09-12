@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>1A — Decision Engine Test</title>
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,sans-serif;margin:0;background:#f5f6f8;color:#20242a}
+header{background:#1f2937;color:#fff;padding:22px 28px}header h1{margin:0 0 4px}header p{margin:0;opacity:.82}
+main{max-width:850px;margin:24px auto;padding:0 18px}.card{background:#fff;border:1px solid #dfe3e8;border-radius:12px;padding:22px;margin-bottom:18px}
+.screen{display:none}.screen.active{display:block}
+label{font-weight:650;display:block;margin:14px 0 6px}input,textarea{width:100%;box-sizing:border-box;border:1px solid #cbd2da;border-radius:8px;padding:10px;font:inherit}textarea{min-height:110px}
+button{border:0;border-radius:8px;padding:12px 16px;font-weight:700;cursor:pointer;margin:12px 8px 0 0;min-height:44px}.primary{background:#111827;color:#fff}.secondary{background:#eef1f4}
+.callout{border-left:4px solid #667085;padding:12px 15px;background:#f8fafc;margin:14px 0}.good{background:#e8f5e9}.warn{background:#fff5df}
+small{color:#667085}.status{font-weight:650}
+</style>
+</head>
+<body>
+<header><h1>1A — Decision Engine Test</h1><p>One decision. One state. No legacy workflow code.</p></header>
+<main>
+<section id="s1" class="card screen active">
+<h2>1. Make a Business Decision</h2>
+<div class="callout"><b>Current approved inventory:</b> <span id="current1"></span></div>
+<label for="proposed">Proposed initial inventory</label>
+<input id="proposed" type="number" min="0" step="5000" value="350000">
+<label for="why">Why do you want to make this change?</label>
+<textarea id="why">I want to increase initial inventory because I think the store needs a deeper selection of premium saltwater equipment.</textarea>
+<button id="continueBtn" class="primary" type="button">Continue</button>
+</section>
+
+<section id="s2" class="card screen">
+<h2>2. Tell the Analyst</h2>
+<div class="callout"><b>Proposed inventory:</b> <span id="proposed2"></span><br><b>Why:</b> <span id="why2"></span></div>
+<label for="expected">What do you expect the change to accomplish?</label>
+<textarea id="expected">I expect the broader selection to increase sales by about 10%.</textarea>
+<label for="effective">When would you make this change?</label>
+<input id="effective" value="At opening">
+<button id="reviewBtn" class="primary" type="button">Review My Decision</button>
+</section>
+
+<section id="s3" class="card screen">
+<h2>3. Confirm Your Decision</h2>
+<div class="callout">
+<b>Change:</b> <span id="change3"></span><br>
+<b>Reason:</b> <span id="why3"></span><br>
+<b>Expected result:</b> <span id="expected3"></span><br>
+<b>Effective:</b> <span id="effective3"></span>
+</div>
+<p><b>Nothing has been approved yet.</b> The decision is still a temporary proposal.</p>
+<button id="acceptBtn" class="primary" type="button">Accept</button>
+<button id="rejectBtn" class="secondary" type="button">Reject</button>
+</section>
+
+<section id="s4" class="card screen">
+<h2>4. Result</h2>
+<div id="result4" class="callout"></div>
+<div class="callout"><b>Current approved inventory:</b> <span id="current4"></span></div>
+<button id="newDecisionBtn" class="primary" type="button">Make Another Decision</button>
+</section>
+
+<section id="s5" class="card screen">
+<h2>5. Second Decision</h2>
+<div class="callout"><b>Current approved inventory:</b> <span id="current5"></span></div>
+<label for="proposed5">Proposed initial inventory</label>
+<input id="proposed5" type="number" min="0" step="5000" value="300000">
+<label for="why5">Why do you want to make this change?</label>
+<textarea id="why5">I am concerned that the additional inventory ties up too much cash.</textarea>
+<button id="continue5Btn" class="primary" type="button">Continue</button>
+</section>
+
+<section id="s6" class="card screen">
+<h2>6. Second Decision Confirmation</h2>
+<div class="callout">
+<b>Change:</b> <span id="change6"></span><br>
+<b>Reason:</b> <span id="why6"></span><br>
+<b>Expected result:</b> <span id="expected6"></span><br>
+<b>Effective:</b> <span id="effective6"></span>
+</div>
+<button id="finishRejectBtn" class="secondary" type="button">Reject This Decision</button>
+<button id="finishAcceptBtn" class="primary" type="button">Accept This Decision</button>
+</section>
+</main>
+<script>
+'use strict';
+const state={
+  business:{originalInventory:300000,currentApprovedInventory:300000},
+  pendingDecision:null,
+  history:[]
+};
+function money(n){return '$'+Math.round(Number(n)||0).toLocaleString('en-US');}
+function direction(current,proposed){return proposed>current?'Increase':proposed<current?'Decrease':'No change';}
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.id===id));}
+function captureFirstDecision(proposedId,whyId){
+  const proposed=Number(document.getElementById(proposedId).value);
+  if(!Number.isFinite(proposed)||proposed<0){alert('Enter a valid inventory amount.');return false;}
+  state.pendingDecision={currentInventory:state.business.currentApprovedInventory,proposedInventory:proposed,reason:document.getElementById(whyId).value.trim(),expectedResult:'',effective:''};
+  document.getElementById('current1').textContent=money(state.business.currentApprovedInventory);
+  return true;
+}
+function renderAnalyst(){
+  const d=state.pendingDecision;
+  document.getElementById('proposed2').textContent=money(d.proposedInventory);
+  document.getElementById('why2').textContent=d.reason||'Not specified';
+}
+function captureAnalyst(){
+  const d=state.pendingDecision;
+  d.expectedResult=document.getElementById('expected').value.trim();
+  d.effective=document.getElementById('effective').value.trim()||'Not specified';
+}
+function renderConfirmation(ids){
+  const d=state.pendingDecision;
+  const verb=direction(d.currentInventory,d.proposedInventory);
+  document.getElementById(ids.change).textContent=verb+' initial inventory from '+money(d.currentInventory)+' to '+money(d.proposedInventory);
+  document.getElementById(ids.why).textContent=d.reason||'Not specified';
+  document.getElementById(ids.expected).textContent=d.expectedResult||'Not specified';
+  document.getElementById(ids.effective).textContent=d.effective||'Not specified';
+}
+function record(result){
+  const d=state.pendingDecision;
+  state.history.push({...d,result});
+  if(result==='Accepted') state.business.currentApprovedInventory=d.proposedInventory;
+  document.getElementById('result4').textContent=result==='Accepted'?'Decision accepted. The approved business has been updated.':'Decision rejected. The approved business has not been changed.';
+  document.getElementById('current4').textContent=money(state.business.currentApprovedInventory);
+  state.pendingDecision=null;
+  show('s4');
+}
+document.getElementById('continueBtn').addEventListener('click',()=>{
+  if(!captureFirstDecision('proposed','why'))return;
+  renderAnalyst();show('s2');
+});
+document.getElementById('reviewBtn').addEventListener('click',()=>{
+  if(!state.pendingDecision)return;
+  captureAnalyst();renderConfirmation({change:'change3',why:'why3',expected:'expected3',effective:'effective3'});show('s3');
+});
+document.getElementById('acceptBtn').addEventListener('click',()=>record('Accepted'));
+document.getElementById('rejectBtn').addEventListener('click',()=>record('Rejected'));
+document.getElementById('newDecisionBtn').addEventListener('click',()=>{
+  document.getElementById('current5').textContent=money(state.business.currentApprovedInventory);show('s5');
+});
+document.getElementById('continue5Btn').addEventListener('click',()=>{
+  const proposed=Number(document.getElementById('proposed5').value);
+  if(!Number.isFinite(proposed)||proposed<0){alert('Enter a valid inventory amount.');return;}
+  state.pendingDecision={currentInventory:state.business.currentApprovedInventory,proposedInventory:proposed,reason:document.getElementById('why5').value.trim(),expectedResult:'I expect the lower inventory investment to improve cash availability.',effective:'At opening'};
+  renderConfirmation({change:'change6',why:'why6',expected:'expected6',effective:'effective6'});show('s6');
+});
+document.getElementById('finishRejectBtn').addEventListener('click',()=>record('Rejected'));
+document.getElementById('finishAcceptBtn').addEventListener('click',()=>record('Accepted'));
+document.getElementById('current1').textContent=money(state.business.currentApprovedInventory);
+</script>
+</body></html>
