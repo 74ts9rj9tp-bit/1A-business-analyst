@@ -1,0 +1,230 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>1A — AI Business Analyst Prototype v44</title>
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,sans-serif;margin:0;background:#f5f6f8;color:#20242a}
+header{background:#1f2937;color:#fff;padding:22px 28px}header h1{margin:0 0 4px}header p{margin:0;opacity:.82}
+main{max-width:1050px;margin:24px auto;padding:0 18px}.card{background:#fff;border:1px solid #dfe3e8;border-radius:12px;padding:22px;margin-bottom:18px}
+.screen{display:none}.screen.active{display:block}
+/* Safari/local-file fallback: show Start by default and targeted screens when JS is unavailable. */
+#s1{display:block}
+main:has(.screen:target) #s1{display:none}
+.screen:target{display:block}.btn{text-decoration:none;display:inline-block}.muted{color:#667085}.label{font-weight:650;display:block;margin:14px 0 6px}
+textarea,input{width:100%;box-sizing:border-box;border:1px solid #cbd2da;border-radius:8px;padding:10px;font:inherit}
+textarea{min-height:120px}.btn{border:0;border-radius:8px;padding:11px 16px;font-weight:700;cursor:pointer;margin:8px 8px 0 0}
+.primary{background:#111827;color:#fff}.secondary{background:#eef1f4}.pill{display:inline-block;background:#eef1f4;border-radius:999px;padding:5px 9px;margin:3px;font-size:13px}
+.callout{border-left:4px solid #667085;padding:12px 15px;background:#f8fafc;margin:14px 0}.warn{background:#fff5df}.good{background:#e8f5e9}
+table{width:100%;border-collapse:collapse;margin-top:12px}th,td{text-align:right;padding:9px;border-bottom:1px solid #e6e9ed}th:first-child,td:first-child{text-align:left}
+.progress{display:flex;gap:6px;margin-bottom:18px}.step{flex:1;height:6px;background:#d9dde3;border-radius:5px}.step.on{background:#374151}
+html,body{-webkit-text-size-adjust:100%}button,a[data-next]{min-height:44px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+a.btn{text-decoration:none}
+.test-nav{position:sticky;top:0;z-index:20;background:#fff;border:1px solid #cfd5dc;border-radius:10px;padding:10px 12px;margin:0 0 18px;box-shadow:0 2px 8px rgba(0,0,0,.06);font-size:13px}.test-nav strong{margin-right:10px}.test-nav span{color:#667085;margin-right:8px}.test-nav a{display:inline-block;margin:3px 4px;padding:7px 9px;border:1px solid #cbd2da;border-radius:7px;text-decoration:none;color:#20242a;background:#f8f9fb;min-height:0}
+@media(max-width:768px){.btn{display:block;width:100%;box-sizing:border-box;text-align:center;margin-bottom:10px}.test-nav a{padding:9px 10px}.test-nav span{display:block;margin:3px 0}}
+</style></head><body>
+<body>
+<header><h1>AI Business Analyst — 1A</h1><p>You make the decisions. The analyst tests them.</p></header>
+<main><div class="test-nav" aria-label="Prototype test navigation"><strong>TEST NAVIGATION</strong><span>Jump directly to:</span><a href="#s1">Start</a><a href="#s2">Readiness</a><a href="#s3">Baseline</a><a href="#s4">Analyst Report</a><a href="#s5">Decision</a><a href="#s6">Board Challenge</a><a href="#s7">Decision Review</a><a href="#s8">Decision Analysis</a><a href="#s9a">History</a><a href="#s10">Final Record</a></div><div class="progress" id="progress"></div>
+
+<section class="card screen" data-screen id="s1"><h2>Start a New Business</h2>
+<p class="muted">Student-facing prototype. Instructor rules are already loaded beneath the surface.</p>
+<label class="label">Business name</label><input value="30A Fly Fishing">
+<label class="label">Student / Project ID</label><input value="TEST-001">
+<label class="label">Original Business Plan</label>
+<textarea>I want to open a full-service fly-fishing store in the 30Avenue shopping center in Inlet Beach, Florida. The store will focus on saltwater fly fishing while also carrying freshwater bass and trout gear. It will carry Orvis, Sage and TFO rods and reels, outdoor clothing, and related products. It will have a full-time manager and assistant manager and use local retirees and fishing enthusiasts as additional staff. Marketing will include YouTube and Facebook, employee fishing/outdoor videos, and relationships with local fishing guides. Prices will generally follow manufacturers' suggested retail prices. The long-term goal is to open additional Gulf Coast locations.</textarea>
+<a class="btn primary nav" href="#s2" data-next="s2">Begin Business Analysis</a></section>
+
+<section class="card screen" data-screen id="s2"><h2>Business Plan Readiness Review</h2>
+<p>Your plan contains enough information to begin an initial analysis.</p>
+<div class="callout"><b>Instructor rules already applied</b><br>
+<span class="pill">5-year projection</span><span class="pill">4 equal shareholders</span><span class="pill">$1M maximum initial equity</span>
+<span class="pill">$250K maximum per investor</span><span class="pill">No additional shareholder equity</span>
+<span class="pill">20% initial operating cash</span><span class="pill">Short-term borrowing permitted</span><span class="pill">Long-term borrowing permitted</span></div>
+<h3>Business information still needed</h3><ul><li>Expected sales</li><li>Gross margin</li><li>Startup expenditures</li><li>Payroll and operating expenses</li><li>Inventory requirement</li></ul>
+<p class="muted">1A does not ask you for initial operating cash or shareholder contributions. Those are determined by instructor rules.</p>
+<a class="btn primary nav" href="#s3" data-next="s3">Establish Initial Baseline</a></section>
+
+<section class="card screen" data-screen id="s3"><h2>Initial Business Baseline</h2>
+<p>These are the starting assumptions. Sources distinguish student assumptions from instructor rules and calculated values.</p>
+<table><tr><th>Input</th><th>Value</th><th>Source</th></tr>
+<tr><td>Year 1 sales</td><td>$1,000,000</td><td>Student estimate</td></tr><tr><td>Gross margin</td><td>48%</td><td>Student estimate</td></tr>
+<tr><td>Initial inventory</td><td>$300,000</td><td>Student estimate</td></tr><tr><td>Startup expenditures</td><td>$515,000</td><td>Baseline</td></tr>
+<tr><td>Initial operating cash</td><td>$103,000</td><td>Instructor rule + calculation</td></tr>
+<tr><td>Total initial funding</td><td>$618,000</td><td>Calculated</td></tr><tr><td>Shareholder contribution</td><td>$154,500 each</td><td>Rule + calculation</td></tr></table>
+<div class="callout"><b>Important:</b> Initial operating cash is cash, not an expense.</div>
+<a class="btn primary nav" href="#s4" data-next="s4">Run Initial Analysis</a></section>
+
+<section class="card screen" data-screen id="s4"><h2>Initial Analyst Report</h2>
+<p><b>The analysis indicates</b> that the proposed business has the potential to become profitable, but the early years are sensitive to sales volume, fixed operating costs, and inventory investment.</p>
+<div class="callout warn"><b>Liquidity deserves attention.</b> Profitability and cash availability are different questions.</div>
+<table><tr><th>Year</th><th>Sales</th><th>Gross Profit</th><th>Net Income</th><th>Ending Cash</th></tr><tr><td>Year 1</td><td>$1,000,000</td><td>$480,000</td><td>$-69,714</td><td>$39,000</td></tr><tr><td>Year 2</td><td>$1,150,000</td><td>$552,000</td><td>$-15,664</td><td>$31,000</td></tr><tr><td>Year 3</td><td>$1,300,000</td><td>$624,000</td><td>$28,250</td><td>$59,000</td></tr><tr><td>Year 4</td><td>$1,450,000</td><td>$696,000</td><td>$68,100</td><td>$139,000</td></tr><tr><td>Year 5</td><td>$1,600,000</td><td>$768,000</td><td>$107,500</td><td>$260,000</td></tr></table>
+<p><b>Approximate Year 1 break-even sales:</b> $1,102,083</p>
+<p class="muted">Production 1A will use fully integrated, reconciled financial statements and working-capital mechanics.</p>
+<a class="btn primary nav" href="#s5" data-next="s5">Make a Decision</a></section>
+
+<section class="card screen" data-screen id="s5"><h2>Make a Business Decision</h2>
+<p>Propose a change to the current approved business. The analyst will test it; it will not change your business automatically.</p>
+<div class="callout"><b>Current approved inventory:</b> <span id="currentApprovedInventory">$300,000</span></div>
+<label class="label">What do you want to change?</label>
+<form id="decisionStartForm">
+<label class="label">Proposed initial inventory</label><input id="inventoryProposal" name="inventory" type="number" value="300000" min="0" step="5000" required>
+<label class="label">Explain the change</label><textarea id="changeExplanation" name="reason">I want to increase initial inventory because I think the store needs a deeper selection of premium saltwater equipment.</textarea>
+<button class="btn primary" id="continueDecisionBtn" type="button" onclick="return startDecision();">Continue</button></form></section>
+
+<section class="card screen" data-screen id="s6"><h2>Tell the Analyst About Your Decision</h2>
+<p>Review the proposal you entered. The analyst will use <b>your</b> amount, reason, expected result, and timing. Nothing is approved yet.</p>
+<div class="callout"><b>Proposed inventory:</b> <span id="proposedInventoryDisplay">$—</span><br><b>Why:</b> <span id="reasonDisplay">—</span></div>
+<label class="label">Proposed initial inventory</label><input id="inventoryProposalS6" type="number" value="300000" min="0" step="5000">
+<label class="label">Why do you want to make this change?</label>
+<textarea id="decisionReason"></textarea>
+<label class="label">What do you expect the change to accomplish?</label>
+<textarea id="decisionExpectedResult"></textarea>
+<label class="label">When would you make this change?</label><input id="decisionEffective" value="At opening">
+<label class="label">Board Challenge</label><p>Imagine you are sitting in front of your Board. What question do you think they would ask about this decision?</p>
+<textarea id="boardQuestion">How do we know the additional inventory will generate enough sales to justify tying up additional capital?</textarea>
+<label class="label">How would you answer the Board?</label>
+<textarea id="boardAnswer">I don't know for certain. I am estimating that the broader selection will improve product availability.</textarea>
+<button class="btn primary" id="reviewDecisionBtn" type="button">Review My Decision</button></section>
+
+<section class="card screen" data-screen id="s7"><h2>Confirm Your Decision</h2>
+<div class="callout"><b>Change:</b> <span id="confirmChange">—</span>.<br><b>Reason:</b> <span id="confirmReason">—</span><br>
+<b>Expected result:</b> <span id="confirmExpectedResult">—</span><br><b>Effective:</b> <span id="confirmEffective">—</span></div>
+<p><b>Temporary scenario:</b> Your approved business has not been changed.</p>
+<button class="btn primary" id="analyzeDecisionBtn" type="button">Analyze This Decision</button>
+<button class="btn secondary" id="changeDecisionBtn" type="button">Change Something</button></section>
+
+<section class="card screen" data-screen id="s8"><h2>Decision Analysis</h2>
+<p><b>The analysis indicates:</b> <span id="analysisNarrative">The proposed inventory change should be evaluated against its expected sales effect and liquidity impact.</span></p>
+<table><tr><th></th><th>Current</th><th>Proposed</th><th>Change</th></tr>
+<tr><td>Initial inventory</td><td id="analysisCurrentInventory">—</td><td id="analysisInventory">—</td><td id="analysisInventoryChange">—</td></tr>
+<tr><td>Year 1 sales assumption</td><td>$1,000,000</td><td id="analysisSales">Not specified by student</td><td id="analysisSalesChange">Not specified by student</td></tr>
+<tr><td>Year 1 gross profit</td><td>$480,000</td><td id="analysisGP">Not calculated</td><td id="analysisGPChange">Not calculated</td></tr>
+<tr><td>Startup expenditures</td><td id="analysisStartupCurrent">$515,000</td><td id="analysisStartupProposed">Not calculated</td><td id="analysisStartupChange">Not calculated</td></tr>
+<tr><td>Initial operating cash</td><td id="analysisCashCurrent">$103,000</td><td id="analysisCashProposed">Not calculated</td><td id="analysisCashChange">Not calculated</td></tr>
+<tr><td>Total initial funding</td><td id="analysisFundingCurrent">$618,000</td><td id="analysisFundingProposed">Not calculated</td><td id="analysisFundingChange">Not calculated</td></tr>
+<tr><td>Shareholder contribution each</td><td id="analysisShareCurrent">$154,500</td><td id="analysisShareProposed">Not calculated</td><td id="analysisShareChange">Not calculated</td></tr></table>
+<h3>Five-Year Financial Model — Year 1</h3>
+<p>The inventory decision changes the amount of startup capital committed to the business. Unless the student specifies a sales or margin change, the operating assumptions remain unchanged.</p>
+<table><tr><th></th><th>Current</th><th>Proposed</th><th>Change</th></tr>
+<tr><td>Year 1 sales</td><td>$1,000,000</td><td id="modelSalesProposed">$1,000,000</td><td id="modelSalesChange">$0</td></tr>
+<tr><td>Year 1 gross profit</td><td>$480,000</td><td id="modelGPProposed">$480,000</td><td id="modelGPChange">$0</td></tr>
+<tr><td>Startup expenditures</td><td>$515,000</td><td id="modelStartupProposed">$515,000</td><td id="modelStartupChange">$0</td></tr>
+<tr><td>Initial operating cash</td><td>$103,000</td><td id="modelCashProposed">$103,000</td><td id="modelCashChange">$0</td></tr>
+<tr><td>Total initial funding</td><td>$618,000</td><td id="modelFundingProposed">$618,000</td><td id="modelFundingChange">$0</td></tr>
+<tr><td>Shareholder contribution each</td><td>$154,500</td><td id="modelShareProposed">$154,500</td><td id="modelShareChange">$0</td></tr>
+</table>
+<p><b>Interpretation:</b> <span id="modelInterpretation">The model has not yet applied the proposed inventory decision.</span></p>
+<div class="callout warn"><b>Key tradeoff:</b> The additional inventory ties up additional capital. Any expected sales increase shown here is a <b>student assumption</b>, not a guarantee.</div>
+<p><b>The analyst does not decide whether this is a good decision.</b> You decide.</p>
+<button class="btn primary" id="acceptDecisionBtn" type="button">Accept</button>
+<button class="btn secondary" id="rejectDecisionBtn" type="button">Reject</button>
+<button class="btn secondary" id="modifyDecisionBtn" type="button">Modify</button></section>
+
+<section class="card screen" data-screen id="s9a"><h2>Business Development History</h2>
+<p>The proposed change and your decision are preserved.</p>
+<table><tr><th>Decision</th><th>Change</th><th>Why</th><th>Expected Result</th><th>AI Analysis</th><th>Decision</th></tr>
+<tr><td>Original</td><td>Initial business</td><td>—</td><td>—</td><td>Baseline analysis</td><td>Approved</td></tr>
+<tr><td>Decision <span id="acceptedNumber">1</span></td><td id="acceptedChange">—</td><td id="acceptedReason">—</td><td id="acceptedExpected">—</td><td id="acceptedAnalysis">—</td><td>Accepted</td></tr></table>
+<div class="callout good"><b>Core learning loop:</b> You make the decision. The analyst tests the decision. You decide what to do with the result.</div>
+<div class="callout"><b>Current approved inventory:</b> <span id="acceptedCurrentApproved">—</span></div>
+<a class="btn primary nav" href="#s5" data-next="s5">Make Another Decision</a><a class="btn secondary nav" href="#s10" data-next="s10">Finish / Generate Final Record</a></section>
+
+<section class="card screen" data-screen id="s9r"><h2>Business Development History</h2>
+<p>The proposed change and your decision are preserved. <b>Rejected decisions are not erased.</b></p>
+<table><tr><th>Decision</th><th>Change</th><th>Why</th><th>Expected Result</th><th>AI Analysis</th><th>Decision</th></tr>
+<tr><td>Original</td><td>Initial business</td><td>—</td><td>—</td><td>Baseline analysis</td><td>Approved</td></tr>
+<tr><td>Decision <span id="rejectedNumber">1</span></td><td id="rejectedChange">—</td><td id="rejectedReason">—</td><td id="rejectedExpected">—</td><td id="rejectedAnalysis">—</td><td>Rejected</td></tr></table>
+<div class="callout good"><b>Core learning loop:</b> You make the decision. The analyst tests the decision. You decide what to do with the result.</div>
+<div class="callout"><b>Current approved inventory:</b> <span id="rejectedCurrentApproved">—</span></div>
+<a class="btn primary nav" href="#s5" data-next="s5">Make Another Decision</a><a class="btn secondary nav" href="#s10" data-next="s10">Finish / Generate Final Record</a></section>
+
+<section class="card screen" data-screen id="s10"><h2>Final Business Development Record</h2>
+<p>In the production version, this record will be downloadable for submission through Canvas.</p>
+<ul><li>Original Business Plan</li><li>Initial Business Baseline</li><li>Initial Five-Year Financial Analysis</li><li>Complete Business Development History</li><li>Current Approved Business</li><li>Initial vs. Final Key Financial Results</li></ul>
+<div class="callout"><b>Important:</b> 1A provides the decision history and analytical record. The student writes the reflection paper.</div>
+<button class="btn secondary" id="printBtn" type="button">Print / Save as PDF</button></section>
+</main>
+<script>
+/* 1A v49 — integrated standalone decision engine. Decision state is authoritative. */
+const STORAGE_KEY = '1A_business_state_v2';
+const state = {
+  currentScreen: 's1',
+  business: { name: '30A Fly Fishing', originalInventory: 300000, currentApprovedInventory: 300000 },
+  pendingDecision: null,
+  history: []
+};
+function money(n){ return '$'+Math.round(Number(n)||0).toLocaleString('en-US'); }
+function signedMoney(n){ n=Number(n)||0; return (n>=0?'+':'-')+money(Math.abs(n)); }
+function direction(current,proposed){ return proposed>current?'Increase':proposed<current?'Decrease':'No change'; }
+function $(id){ return document.getElementById(id); }
+function saveState(){ try{ localStorage.setItem(STORAGE_KEY,JSON.stringify({business:state.business,history:state.history})); }catch(e){} }
+function loadState(){ try{ const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null'); if(saved&&saved.business){ state.business.originalInventory=Number(saved.business.originalInventory)||300000; state.business.currentApprovedInventory=Number(saved.business.currentApprovedInventory)||state.business.originalInventory; state.history=Array.isArray(saved.history)?saved.history:[]; } }catch(e){} }
+function updateProgress(id){ const p=$('progress'); if(!p)return; const n=Number(String(id).replace('s',''))||1; p.innerHTML=''; for(let i=1;i<=10;i++){const step=document.createElement('div');step.className='step'+(i<=n?' on':'');p.appendChild(step);} }
+function showScreen(id){ const target=$(id); if(!target)return; document.querySelectorAll('[data-screen]').forEach(s=>s.classList.toggle('active',s===target)); state.currentScreen=id; updateProgress(id); window.scrollTo(0,0); if(id==='s5')renderDecisionStart(); if(id==='s6')renderAnalyst(); if(id==='s7')renderConfirmation(); if(id==='s8')renderAnalysis(); }
+function renderDecisionStart(){ $('currentApprovedInventory').textContent=money(state.business.currentApprovedInventory); }
+function startDecision(){
+  const proposed=Number($('inventoryProposal').value);
+  if(!Number.isFinite(proposed)||proposed<0){alert('Enter a valid inventory amount.');return false;}
+  state.pendingDecision={currentInventory:state.business.currentApprovedInventory,proposedInventory:proposed,reason:$('changeExplanation').value.trim(),expectedResult:'',effective:'At opening',boardQuestion:'',boardAnswer:''};
+  renderAnalyst(); showScreen('s6'); return false;
+}
+function renderAnalyst(){ const d=state.pendingDecision; if(!d)return; $('inventoryProposalS6').value=d.proposedInventory; $('decisionReason').value=d.reason; $('decisionExpectedResult').value=d.expectedResult; $('decisionEffective').value=d.effective; $('proposedInventoryDisplay').textContent=money(d.proposedInventory); $('reasonDisplay').textContent=d.reason||'Not specified'; }
+function captureAnalyst(){ const d=state.pendingDecision; if(!d)return false; d.proposedInventory=Number($('inventoryProposalS6').value); d.reason=$('decisionReason').value.trim(); d.expectedResult=$('decisionExpectedResult').value.trim(); d.effective=$('decisionEffective').value.trim()||'Not specified'; d.boardQuestion=$('boardQuestion').value.trim(); d.boardAnswer=$('boardAnswer').value.trim(); return true; }
+function renderConfirmation(){ const d=state.pendingDecision;if(!d)return; $('confirmChange').textContent=direction(d.currentInventory,d.proposedInventory)+' initial inventory from '+money(d.currentInventory)+' to '+money(d.proposedInventory); $('confirmReason').textContent=d.reason||'Not specified'; $('confirmExpectedResult').textContent=d.expectedResult||'Not specified'; $('confirmEffective').textContent=d.effective||'Not specified'; }
+function renderAnalysis(){
+  const d=state.pendingDecision;if(!d)return;
+  const change=d.proposedInventory-d.currentInventory;
+  const m=(d.expectedResult||'').match(/(\d+(?:\.\d+)?)\s*%/);
+  let sales=1000000,gp=480000;
+  if(m){const pct=Number(m[1]);sales=1000000*(1+pct/100);gp=sales*.48;}
+  const startupCurrent=515000;
+  const startupProposed=startupCurrent+change;
+  const cashCurrent=103000;
+  const cashProposed=startupProposed*.20;
+  const fundingCurrent=startupCurrent+cashCurrent;
+  const fundingProposed=startupProposed+cashProposed;
+  const shareCurrent=fundingCurrent/4;
+  const shareProposed=fundingProposed/4;
+  $('analysisCurrentInventory').textContent=money(d.currentInventory);
+  $('analysisInventory').textContent=money(d.proposedInventory);
+  $('analysisInventoryChange').textContent=signedMoney(change);
+  $('analysisSales').textContent=money(sales);
+  $('analysisSalesChange').textContent=signedMoney(sales-1000000);
+  $('analysisGP').textContent=money(gp);
+  $('analysisGPChange').textContent=signedMoney(gp-480000);
+  $('analysisStartupCurrent').textContent=money(startupCurrent);
+  $('analysisStartupProposed').textContent=money(startupProposed);
+  $('analysisStartupChange').textContent=signedMoney(change);
+  $('analysisCashCurrent').textContent=money(cashCurrent);
+  $('analysisCashProposed').textContent=money(cashProposed);
+  $('analysisCashChange').textContent=signedMoney(cashProposed-cashCurrent);
+  $('analysisFundingCurrent').textContent=money(fundingCurrent);
+  $('analysisFundingProposed').textContent=money(fundingProposed);
+  $('analysisFundingChange').textContent=signedMoney(fundingProposed-fundingCurrent);
+  $('analysisShareCurrent').textContent=money(shareCurrent);
+  $('analysisShareProposed').textContent=money(shareProposed);
+  $('analysisShareChange').textContent=signedMoney(shareProposed-shareCurrent);
+  $('modelSalesProposed').textContent=money(sales); $('modelSalesChange').textContent=signedMoney(sales-1000000);
+  $('modelGPProposed').textContent=money(gp); $('modelGPChange').textContent=signedMoney(gp-480000);
+  $('modelStartupProposed').textContent=money(startupProposed); $('modelStartupChange').textContent=signedMoney(change);
+  $('modelCashProposed').textContent=money(cashProposed); $('modelCashChange').textContent=signedMoney(cashProposed-cashCurrent);
+  $('modelFundingProposed').textContent=money(fundingProposed); $('modelFundingChange').textContent=signedMoney(fundingProposed-fundingCurrent);
+  $('modelShareProposed').textContent=money(shareProposed); $('modelShareChange').textContent=signedMoney(shareProposed-shareCurrent);
+  $('analysisNarrative').textContent=m?'The student expects sales to change by '+m[1]+'%. Under that student assumption, the model calculates the corresponding gross-profit effect. The inventory decision also changes startup funding requirements.':'No change in sales was specified by the student. The model therefore holds Year 1 sales at the existing $1,000,000 assumption and calculates gross profit at the existing 48% margin. The inventory change affects startup funding and the amount of capital committed to the business.';
+  $('modelInterpretation').textContent=change>0?'The proposed inventory increase requires additional startup expenditures and additional initial operating cash. The model therefore increases total initial funding and the equal contribution required from each shareholder.':change<0?'The proposed inventory decrease reduces startup expenditures and the required initial operating cash. The model therefore reduces total initial funding and the equal contribution required from each shareholder.':'The proposed inventory is unchanged, so the funding requirements are unchanged.';
+}
+function record(result){ const d=state.pendingDecision;if(!d)return; state.history.push({number:state.history.length+1,currentInventory:d.currentInventory,proposedInventory:d.proposedInventory,reason:d.reason,expectedResult:d.expectedResult,effective:d.effective,result,analysis:(d.proposedInventory>d.currentInventory?'The proposed inventory increase requires '+money(d.proposedInventory-d.currentInventory)+' more startup expenditures and '+money((d.proposedInventory-d.currentInventory)*0.20)+' more initial operating cash, for '+money((d.proposedInventory-d.currentInventory)*1.20)+' additional initial funding.':d.proposedInventory<d.currentInventory?'The proposed inventory decrease reduces startup expenditures by '+money(d.currentInventory-d.proposedInventory)+' and reduces initial operating cash by '+money((d.currentInventory-d.proposedInventory)*0.20)+', reducing total initial funding by '+money((d.currentInventory-d.proposedInventory)*1.20)+'.':'No funding change results from the proposed inventory decision.')+' Any sales effect is based on the student’s stated expectation.'}); if(result==='Accepted')state.business.currentApprovedInventory=d.proposedInventory; saveState(); renderHistory(result); state.pendingDecision=null; showScreen(result==='Accepted'?'s9a':'s9r'); }
+function renderHistory(result){ const h=state.history[state.history.length-1]; const p=result==='Accepted'?'accepted':'rejected'; $(p+'Number').textContent=h.number; $(p+'Change').textContent=direction(h.currentInventory,h.proposedInventory)+' initial inventory from '+money(h.currentInventory)+' to '+money(h.proposedInventory); $(p+'Reason').textContent=h.reason||'Not specified'; $(p+'Expected').textContent=h.expectedResult||'Not specified'; $(p+'Analysis').textContent=h.analysis; $(p+'CurrentApproved').textContent=money(state.business.currentApprovedInventory); }
+function goTo(id){ showScreen(id); return false; }
+document.addEventListener('DOMContentLoaded',()=>{
+  loadState();
+  document.querySelectorAll('a[data-next]').forEach(link=>link.addEventListener('click',e=>{e.preventDefault();goTo(link.dataset.next);}));
+  $('decisionStartForm')?.addEventListener('submit',e=>{e.preventDefault();startDecision();});
+  $('reviewDecisionBtn')?.addEventListener('click',()=>{if(captureAnalyst()){renderConfirmation();showScreen('s7');}});
+  $('analyzeDecisionBtn')?.addEventListener('click',()=>showScreen('s8'));
+  $('changeDecisionBtn')?.addEventListener('click',()=>showScreen('s6'));
+  $('acceptDecisionBtn')?.addEventListener('click',()=>record('Accepted'));
+  $('rejectDecisionBtn')?.addEventListener('click',()=>record('Rejected'));
+  $('modifyDecisionBtn')?.addEventListener('click',()=>showScreen('s5'));
+  $('printBtn')?.addEventListener('click',()=>window.print());
+  renderDecisionStart(); showScreen('s1');
+});
+</script></body></html>
